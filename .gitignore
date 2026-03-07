@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+set_env_local.sh
+set_env.sh
+*.local.sh
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Google Cloud
+*.json
+!package.json
+!pyproject.toml
+service-account*.json
+credentials*.json
+
+# Misc
+.DS_Store
+*.log
+.pytest_cache/
