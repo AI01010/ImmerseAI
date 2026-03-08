@@ -8,6 +8,7 @@ export default defineConfig({
     proxy: {
       '/run': 'http://localhost:8000',
       '/list': 'http://localhost:8000',
+      '/apps': 'http://localhost:8000',
     }
   }
 })
