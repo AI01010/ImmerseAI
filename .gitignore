@@ -26,6 +26,14 @@ set_env.sh
 service-account*.json
 credentials*.json
 
+# Frontend
+frontend/node_modules/
+frontend/dist/
+!frontend/.env
+
+# ADK session db
+agent/.adk/
+
 # Misc
 .DS_Store
 *.log

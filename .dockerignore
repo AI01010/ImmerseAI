@@ -1,0 +1,15 @@
+.git/
+frontend/node_modules/
+frontend/dist/
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+.venv/
+venv/
+*.egg-info/
+*.log
+.pytest_cache/
+agent/.adk/
+set_env.sh
+set_env_local.sh
+.DS_Store

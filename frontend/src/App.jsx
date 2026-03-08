@@ -4,8 +4,8 @@ import RoadmapPanel from './components/RoadmapPanel'
 import Onboarding from './components/Onboarding'
 import './App.css'
 
-const ADK_BASE = import.meta.env.VITE_ADK_URL || 'http://localhost:8000'
-const APP_NAME = 'ImmerseAI'
+const ADK_BASE = import.meta.env.VITE_ADK_URL || ''
+const APP_NAME = 'agent'
 
 function generateSessionId() {
   return 'sess_' + Math.random().toString(36).slice(2, 10)
