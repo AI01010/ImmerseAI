@@ -24,14 +24,16 @@ export default function App() {
     setUserProfile(profile)
     setPhase('app')
 
-    // Create session in ADK before sending first message
+    // Create session in ADK — returns the real session ID
     try {
-      await fetch(`${ADK_BASE}/apps/${APP_NAME}/users/${userId.current}/sessions/${sessionId.current}`, {
+      const res = await fetch(`${ADK_BASE}/apps/${APP_NAME}/users/${userId.current}/sessions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({})
       })
-    } catch (_) { /* session may already exist, continue */ }
+      const data = await res.json()
+      if (data.id) sessionId.current = data.id
+    } catch (_) { /* continue with generated session ID */ }
 
     const intro = `Hi! I'm ${profile.name}. I want to learn ${profile.goal}. I'm currently at ${profile.level} level. ${profile.background ? 'Background: ' + profile.background : ''}`
     sendMessage(intro, profile)
