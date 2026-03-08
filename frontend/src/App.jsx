@@ -80,7 +80,7 @@ export default function App() {
         <div className="workspace">
           <header className="topbar">
             <div className="topbar-left">
-              <span className="logo-mark">◈</span>
+              <img src="/logo.png" alt="" className="logo-img" />
               <span className="logo-text">ImmerseAI</span>
             </div>
             <div className="topbar-center">

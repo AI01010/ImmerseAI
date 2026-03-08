@@ -30,10 +30,10 @@
   gap: 8px;
 }
 
-.logo-mark {
-  color: var(--accent);
-  font-size: 18px;
-  line-height: 1;
+.logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
 }
 
 .logo-text {
