@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import ChatPanel from './components/ChatPanel'
 import RoadmapPanel from './components/RoadmapPanel'
 import Onboarding from './components/Onboarding'
@@ -20,15 +20,24 @@ export default function App() {
   const sessionId = useRef(generateSessionId())
   const userId = useRef('user_' + Math.random().toString(36).slice(2, 8))
 
-  const handleOnboardingComplete = (profile) => {
+  const handleOnboardingComplete = async (profile) => {
     setUserProfile(profile)
     setPhase('app')
-    // Send initial message automatically
+
+    // Create session in ADK before sending first message
+    try {
+      await fetch(`${ADK_BASE}/apps/${APP_NAME}/users/${userId.current}/sessions/${sessionId.current}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({})
+      })
+    } catch (_) { /* session may already exist, continue */ }
+
     const intro = `Hi! I'm ${profile.name}. I want to learn ${profile.goal}. I'm currently at ${profile.level} level. ${profile.background ? 'Background: ' + profile.background : ''}`
     sendMessage(intro, profile)
   }
 
-  const sendMessage = async (text, profile = userProfile) => {
+  const sendMessage = async (text) => {
     if (!text.trim() || loading) return
 
     const userMsg = { role: 'user', content: text, ts: Date.now() }
