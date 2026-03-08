@@ -4,7 +4,7 @@ ImmerseAI - Root Orchestrator Agent
 Architecture:
 - OrchestratorAgent (root): coordinates all specialists, synthesizes final roadmap
   - before_agent_callback: loads user profile from MongoDB
-- ParallelAgent (LearningCrew): runs 3 specialists concurrently
+- SequentialAgent (LearningCrew): runs 3 specialists in sequence
   - ProfileAgent:     user skill level + learning history from MongoDB
   - CurriculumAgent:  fetches relevant YouTube videos + resources
   - LogicAgent:       s(CASP) prerequisite checking + gap detection
@@ -15,7 +15,7 @@ import os
 import logging
 import httpx
 
-from google.adk.agents import Agent, ParallelAgent
+from google.adk.agents import Agent, SequentialAgent
 from google.adk.agents.callback_context import CallbackContext
 
 from agent.agents.profile_agent import profile_agent
@@ -58,9 +58,9 @@ async def setup_user_context(callback_context: CallbackContext) -> None:
 # LEARNING CREW (PARALLEL)
 # =============================================================================
 
-learning_crew = ParallelAgent(
+learning_crew = SequentialAgent(
     name="LearningCrew",
-    description="Runs ProfileAgent, CurriculumAgent, and LogicAgent concurrently.",
+    description="Runs ProfileAgent, CurriculumAgent, and LogicAgent in sequence.",
     sub_agents=[profile_agent, curriculum_agent, logic_agent],
 )
 
