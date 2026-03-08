@@ -18,7 +18,7 @@ except Exception as e:
 
 profile_agent = Agent(
     name="ProfileAgent",
-    model="gemini-2.5-flash",
+    model="gemini-2.0-flash",
     description="Retrieves and analyzes user learning profile, skill level, and history from MongoDB.",
     instruction="""You are a Profile Analyst that understands where a learner currently stands.
 

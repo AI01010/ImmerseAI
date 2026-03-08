@@ -23,7 +23,7 @@ except Exception as e:
 
 logic_agent = Agent(
     name="LogicAgent",
-    model="gemini-2.5-flash",
+    model="gemini-2.0-flash",
     description="Uses s(CASP) logic engine for explainable prerequisite checking and learning sequence optimization.",
     instruction="""You are a Logic Analyst that ensures learning paths are sequenced correctly.
 

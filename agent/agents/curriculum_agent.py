@@ -19,7 +19,7 @@ except Exception as e:
 curriculum_agent = Agent(
     name="CurriculumAgent",
     description="Finds and ranks the best learning resources matched to user's skill level and goal.",
-    model="gemini-2.5-flash",
+    model="gemini-2.0-flash",
     instruction="""You are a Curriculum Specialist that finds the best learning resources.
 
 ## YOUR INPUT

@@ -71,7 +71,7 @@ learning_crew = SequentialAgent(
 
 root_agent = Agent(
     name="ImmerseAI",
-    model="gemini-2.5-flash",
+    model="gemini-2.0-flash",
     description="Personalized multi-agent learning advisor that builds custom learning roadmaps.",
     instruction="""You are ImmerseAI — a personalized learning advisor that builds custom learning roadmaps.
 
